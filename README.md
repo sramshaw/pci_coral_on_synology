@@ -57,8 +57,15 @@ Where to put logic to change the VM?
 
 As I am waiting for the M.2 B+M key Coral TPU to arrive by mail, I am instead attaching my 10G ethernet card to the VM as a training exercise.
 
+Installation:
+- create folder /usr/local/libvirt, and copy all files from this repo's scripts folder into it
+- adapt attach_Intel82599ES.sh for the vendor, product and VM name you are targetting 
+- modify  /var/packages/Virtualization/conf/systemd/insert_libvirtd_ko.sh so that it calls /usr/local/libvirt/my_hook_setup.sh
 
-
+Side effects:
+- currently, starting the VM can only be done once, after stopping it it wont restart until the NAS is rebooted
+- but it works the first time the VM starts !
+- good enough for now as it will be used for a VM that runs all the time
 
 ## References 
 useful readings:
