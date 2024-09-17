@@ -71,6 +71,8 @@ Side effects:
 - but it works the first time the VM starts !
 - good enough for now as it will be used for a VM that runs all the time
 
+TPU info: vendor=0x1ac1 device=0x089a 
+
 ## References 
 useful readings:
 - https://www.ibm.com/docs/en/linux-on-systems?topic=through-pci especially step 2.b
