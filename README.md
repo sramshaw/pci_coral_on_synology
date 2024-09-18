@@ -87,7 +87,7 @@ Installation:
 - adapt attach_Intel82599ES.sh for the vendor, product and VM name you are targetting 
 - modify  /var/packages/Virtualization/conf/systemd/insert_libvirtd_ko.sh so that it calls /usr/local/libvirt/my_hook_setup.sh
 
-Side effects:
+Results of the hack:
 - currently, starting the VM can only be done once, after stopping it it wont restart until the NAS is rebooted
 - but the PCI passthrough works the first time the VM starts !
   - observe the effect on both the host (look for use of driver vfio-pci) and the VM by using the command ```lspci -k```
