@@ -16,6 +16,26 @@ This should apply to any Synology NAS with DSM7+ that allows for VM + AMD-Vi or 
 My hardware is the DS1621+ NAS , with the V1500B Ryzen processor.
 My DSM version: DSM 7.2.1-69057 Update 4
 
+One of the best way to check that the system is able is to run the following as root under ssh:
+
+```virt-host-validate```
+
+results on DS1621+:
+
+|||
+|---|---|
+|  QEMU: Checking for hardware virtualization                                 | $${\color{green}PASS}$$ |
+|  QEMU: Checking if device /dev/kvm exists                                   | $${\color{green}PASS}$$ |
+|  QEMU: Checking if device /dev/kvm is accessible                            | $${\color{green}PASS}$$ |
+|  QEMU: Checking if device /dev/vhost-net exists                             | $${\color{green}PASS}$$ |
+|  QEMU: Checking if device /dev/net/tun exists                               | $${\color{green}PASS}$$ |
+|  QEMU: Checking for cgroup 'cpu' controller support                         | $${\color{green}PASS}$$ |
+|  (...)                     |  |
+|  QEMU: Checking for cgroup 'blkio' controller support                       | $${\color{green}PASS}$$ |
+|  QEMU: Checking for device assignment IOMMU support                         | $${\color{green}PASS}$$ |
+|  QEMU: Checking if IOMMU is enabled by kernel                               | $${\color{green}PASS}$$ |
+|  QEMU: Checking for secure guest support                                    | $${\color{orange}WARN}$$ |
+
 ## Approach
 In order to modify the NAS 's VM behavior, I used ssh access to the NAS.
 From my readings, IOMMU  and vfio-pci driver are required for passthrough to work.
