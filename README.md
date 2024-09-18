@@ -89,7 +89,8 @@ Installation:
 
 Side effects:
 - currently, starting the VM can only be done once, after stopping it it wont restart until the NAS is rebooted
-- but it works the first time the VM starts !
+- but the PCI passthrough works the first time the VM starts !
+  - observe the effect on both the host (look for use of driver vfio-pci) and the VM by using the command ```lspci -k```
 - good enough for now as it will be used for a VM that runs all the time
 
 TPU info: vendor=0x1ac1 device=0x089a 
