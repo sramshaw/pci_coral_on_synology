@@ -20,8 +20,9 @@ One of the best way to check that the system is able is to run the following as 
 
 ```virt-host-validate```
 
-results on DS1621+:
+### Results on DS1621+:
 
+<!--- first line below needed to start table, also use md Latex expression for green colored PASS -->
 |||
 |---|---|
 |  QEMU: Checking for hardware virtualization                                 | $${\color{green}PASS}$$ |
