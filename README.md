@@ -98,5 +98,6 @@ TPU info: vendor=0x1ac1 device=0x089a
 useful readings:
 - https://www.ibm.com/docs/en/linux-on-systems?topic=through-pci especially step 2.b
 - https://libvirt.org/hooks.html for a description of the calls to the hook
+- https://serverfault.com/questions/765232/virsh-qemu-kvm-editing-xml-has-no-effect the hooks cannot be used to change the VM definition
 - https://prefetch.net/articles/linuxpci.html to get a sense of the PCI address scheme, and the vendor product numbers.
 - https://www.makerfabs.com/dual-edge-tpu-adapter-m2-2280-b-m-key.html , M.2 B+M key adapter for M.2 A+E key dual TPU Coral 
