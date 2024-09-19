@@ -5,12 +5,14 @@ exec >> /var/log/virsh_attach_results.log 2>&1
 VENDOR="$1"
 PRODUCT="$2"
 VM_NAME="$3"
+EXTRA_MODEPROB_PARAMS="$4"
+
 VM_ID=`virsh list --title | tail -n +3 | grep $VM_NAME | awk '{print $1}'`
 ADDRESSES=($(lspci |grep $VENDOR:$PRODUCT | awk '{print $1}'))
 modprobe -r vfio_pci
 for ADDRESS in "${ADDRESSES[@]}"; do  echo "0000:$ADDRESS" > /sys/bus/pci/devices/0000:$ADDRESS/driver/unbind ; done
 echo $VENDOR $PRODUCT > /sys/bus/pci/drivers/vfio-pci/new_id
-modprobe vfio_pci ids=$VENDOR:$PRODUCT
+modprobe vfio_pci ids=$VENDOR:$PRODUCT $EXTRA_MODEPROB_PARAMS
 for ADDRESS in "${ADDRESSES[@]}"
 do
   DOMAIN=0x0000

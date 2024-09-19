@@ -11,8 +11,10 @@ cat - > $XML_FILENAME
 XML_CONTENT=$(cat $XML_FILENAME)
 VM_NAME=`grep -P  '[a-zA-Z0-9]+(?=\</title)' -o $XML_FILENAME`
 
+ls /volume1 > /var/log/libvirt_hooks.log
+
 if [[ "detector" == "$VM_NAME" ]] && [[ "started" == "$EVENT"  ]]
 then
     echo "Modifying VM '$VM_NAME' at event '$EVENT' for $(whoami) " >> /var/log/libvirt_hooks.log
-    nohup sh /usr/local/libvirt/attach_Intel82599ES.sh &
+    nohup sh /usr/local/libvirt/attach_all.sh &
 fi
