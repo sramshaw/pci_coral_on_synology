@@ -10,7 +10,7 @@ echo "Modifying VM $VM_NAME at event $EVENT for $(whoami) " >> /var/log/libvirt_
 XML_FILENAME=/tmp/vm_${VM_NAME}_$(date '+%_H%M%S')_${EVENT}.xml
 cat - > $XML_FILENAME
 XML_CONTENT=$(cat $XML_FILENAME)
-VM_NAME=`grep -P  '[a-zA-Z0-9]+(?=\</title)' -o $XML_FILENAME`
+VM_NAME=`grep -P  '[a-zA-Z0-9_]+(?=\</title)' -o $XML_FILENAME`
 
 ls /volume1 > /var/log/libvirt_hooks.log
 
