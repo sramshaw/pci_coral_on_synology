@@ -6,5 +6,5 @@
 
 VENDOR="1ac1"
 PRODUCT="089a"
-VM_NAME="detector"
+VM_NAME="frigate_VM"
 /usr/local/libvirt/attach_pci_to_vm.sh $VENDOR $PRODUCT $VM_NAME  #disable_idle_d3=1
