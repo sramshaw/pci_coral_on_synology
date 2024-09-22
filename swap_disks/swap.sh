@@ -15,7 +15,7 @@ guid1=`cat $vol1/iscsi_lun_acl.conf |grep lun_uuid | sed "${l1}q;d" | sed 's/lun
 guid2=`cat $vol2/iscsi_lun_acl.conf |grep lun_uuid | sed "${l2}q;d" | sed 's/lun_uuid=//'`
 echo guid1 $guid1
 echo guid2 $guid2
-rename $vol1/VDISK_BLUN/$guid1  $vol1/VDISK_BLUN/$guid2
-rename $vol2/VDISK_BLUN/$guid2  $vol2/VDISK_BLUN/$guid1
-find -name "$vol1/*.conf" -exec sed "s/${guid1}/${guid2}/" {} \;
-find -name "$vol2/*.conf" -exec sed "s/${guid2}/${guid1}/" {} \;
+mv $vol1/VDISK_BLUN/$guid1  $vol1/VDISK_BLUN/$guid2
+mv $vol2/VDISK_BLUN/$guid2  $vol2/VDISK_BLUN/$guid1
+find $vol1 -name "*.conf" -exec sed "s/${guid1}/${guid2}/" {} \;
+find $vol2 -name "*.conf" -exec sed "s/${guid2}/${guid1}/" {} \;
