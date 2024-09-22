@@ -3,12 +3,14 @@ v1="$1"  #ex: 2 for /volume2
 l1="$2"  #ex: 1 for 1st SCSI disk
 v2="$3"  #ex: 3 for /volume3
 l2="$4"  #ex: 2 for 2nd SCSI disk
-# real prefix
+
+# real prefix + sufix
 #prefix="/volume"
 #sufix="/@iSCSI/LUN"
-# test prefix
+# test prefix + sufix
 prefix="/volume1/homes/sylvain_admin/NAS/pci_coral_on_synology/swap_disks/originals/vol"
 sufix=""
+
 vol1="${prefix}${v1}${sufix}"
 vol2="${prefix}${v2}${sufix}"
 echo vol1 $vol1
