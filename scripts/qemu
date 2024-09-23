@@ -5,14 +5,17 @@ exec > /var/log/libvirt_hook_debug.log 2>&1
 VM_NAME="$1"
 EVENT="$2"
 PHASE="$3"
+TARGET_VM="frigate_VM"
 echo "Modifying VM $VM_NAME at event $EVENT for $(whoami) " >> /var/log/libvirt_hooks.log
 XML_FILENAME=/tmp/vm_${VM_NAME}_$(date '+%_H%M%S')_${EVENT}.xml
 cat - > $XML_FILENAME
 XML_CONTENT=$(cat $XML_FILENAME)
-VM_NAME=`grep -P  '[a-zA-Z0-9]+(?=\</title)' -o $XML_FILENAME`
+VM_NAME=`grep -P  '[a-zA-Z0-9_]+(?=\</title)' -o $XML_FILENAME`
 
-if [[ "detector" == "$VM_NAME" ]] && [[ "started" == "$EVENT"  ]]
+ls /volume1 > /var/log/libvirt_hooks.log
+
+if [[ "$TARGET_VM" == "$VM_NAME" ]] && [[ "started" == "$EVENT"  ]]
 then
     echo "Modifying VM '$VM_NAME' at event '$EVENT' for $(whoami) " >> /var/log/libvirt_hooks.log
-    nohup sh /usr/local/libvirt/attach_Intel82599ES.sh &
+    nohup sh /usr/local/libvirt/attach_all.sh &
 fi
